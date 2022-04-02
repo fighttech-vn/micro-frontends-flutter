@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -22,7 +22,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  generate: true # Add this line
   # To add assets to your package, add an assets section, like this:
   assets:
     - assets/images/

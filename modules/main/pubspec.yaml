@@ -11,12 +11,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0 # Add this line
+
   flutter_svg: ^1.0.3
   extended_image: ^6.0.2+1
   lottie: ^1.2.2
 
   design_system:
     path: ../design_system
+  localization:
+    path: ../localization
 
 dev_dependencies:
   flutter_test:
