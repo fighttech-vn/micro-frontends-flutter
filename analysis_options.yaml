@@ -6,8 +6,6 @@ analyzer:
   errors:
     todo: ignore
   exclude:
-    - modules/data/lib/datasource/remote/quizz_cx_api.g.dart
-    - modules/social_share_plugin/lib/social_share_plugin.dart
 
 linter:
   rules:
