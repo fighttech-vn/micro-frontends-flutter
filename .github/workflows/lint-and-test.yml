@@ -1,11 +1,11 @@
 name: Pipeline Lint and Test
 
-on:
-  pull_request:
-  push:
-    branches:
-      - develop
-      - master
+# on:
+#   pull_request:
+#   push:
+#     branches:
+#       - develop
+#       - master
  
 jobs:
 
