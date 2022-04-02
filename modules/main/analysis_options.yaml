@@ -1,4 +1,29 @@
 include: package:flutter_lints/flutter.yaml
 
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+analyzer:
+  exclude:
+  language:
+    strict-raw-types: true
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: true
+  errors:
+    # allow having TODOs in the code
+    todo: ignore
+    missing_return: error
+    dead_code: info
+
+linter:
+  rules:
+    - always_declare_return_types
+    - cancel_subscriptions
+    - close_sinks
+    - comment_references
+    - only_throw_errors
+    - package_api_docs
+    - prefer_single_quotes
+    - sort_child_properties_last
+    - prefer_relative_imports
+    - implementation_imports
+    - avoid_relative_lib_imports
+    - directives_ordering
