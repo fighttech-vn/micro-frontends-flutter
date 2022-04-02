@@ -2,7 +2,7 @@ name: Pipeline Lint and Test
 
 on:
   workflow_run:
-    workflows: ["Build"]
+    workflows: ["Pipeline Lint and Test"]
     types: [requested]
     branches:
       - develop
