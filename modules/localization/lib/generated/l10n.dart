@@ -50,20 +50,20 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Hello World!`
+  /// `Hello World! - EN`
   String get helloWorld {
     return Intl.message(
-      'Hello World!',
+      'Hello World! - EN',
       name: 'helloWorld',
       desc: 'The conventional newborn programmer greeting',
       args: [],
     );
   }
 
-  /// `Hello World!`
+  /// `Hello World! - EN`
   String get helloWorld1 {
     return Intl.message(
-      'Hello World!',
+      'Hello World! - EN',
       name: 'helloWorld1',
       desc: '',
       args: [],

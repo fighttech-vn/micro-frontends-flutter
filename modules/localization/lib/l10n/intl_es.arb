@@ -1,7 +1,7 @@
 {
     "@@locale": "es",
-    "helloWorld": "Hello World!",
-    "helloWorld1": "Hello World!",
+    "helloWorld": "Hello World! - ES",
+    "helloWorld1": "Hello World! - ES",
     "@helloWorld": {
         "description": "The conventional newborn programmer greeting"
     }
