@@ -1,4 +1,4 @@
-package com.example.micro_frontends_flutter
+package vn.fighttech.flutterfightkit
 
 import io.flutter.embedding.android.FlutterActivity
 
