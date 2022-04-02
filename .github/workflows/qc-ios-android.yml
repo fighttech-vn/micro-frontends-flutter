@@ -1,14 +1,10 @@
 name: iOS & Android upload Firebase Distribution
  
-# on:
-#  push:
-#    branches:
-#      - qc
 on:
  push:
-   branches:
-     - feature/add-github-action
-     
+    branches:
+      - qc
+
 jobs:
   lint:
     runs-on: ubuntu-latest

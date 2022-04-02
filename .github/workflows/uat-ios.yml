@@ -1,9 +1,9 @@
 name: iOS build & upload
  
 on:
- push:
-   branches:
-     - uat 
+  push:
+    branches:
+      - uat 
 
 jobs:
 
