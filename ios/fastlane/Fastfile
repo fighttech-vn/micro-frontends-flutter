@@ -97,7 +97,7 @@ platform :ios do
   end
 
   desc "Distribute app via Firebase Distribution"
-  lane :distribute_via_firebase
+  lane :distribute_via_firebase do
     firebase_app_distribution(
       app: ENV["FIREBASE_APP_ID"] ,
       groups: ENV["GROUP_TEST"],

@@ -26,7 +26,6 @@ platform :android do
       apk_path: "../build/app/outputs/flutter-apk/app-release.apk"
     )
   end
-
 end
 
 

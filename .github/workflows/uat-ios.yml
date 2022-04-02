@@ -1,15 +1,10 @@
 name: iOS build & upload
  
-# on:
-#  push:
-#    branches:
-#      - uat 
-
 on:
  push:
    branches:
-     - feature/add-github-action
- 
+     - uat 
+
 jobs:
 
   lint:
