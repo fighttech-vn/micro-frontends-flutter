@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
-flutter gen-l10n
+# flutter pun add intl_utils
+
+dart pub global run intl_utils:generate
 
 echo "Build Data Done !!!"
