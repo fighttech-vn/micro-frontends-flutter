@@ -1,8 +1,7 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
-
-import 'package:design_system/design_system.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
