@@ -61,14 +61,14 @@ android {
         versionName flutterVersionName
     }
 
-    signingConfigs {
-        release {
-            keyAlias "FlutterFightKIT"
-            keyPassword "123456"
-            storePassword "123456"
-            storeFile file("flutter_fight_kit.keystore")
-        }
-    }
+    // signingConfigs {
+    //     release {
+    //         keyAlias keystoreProperties.getProperty('keyAlias')
+    //         keyPassword keystoreProperties.getProperty('keyPassword')
+    //         storePassword keystoreProperties.getProperty('storePassword')
+    //         storeFile file(keystoreProperties.getProperty('storeFile'))
+    //     }
+    // }
 
     buildTypes {
         release {
