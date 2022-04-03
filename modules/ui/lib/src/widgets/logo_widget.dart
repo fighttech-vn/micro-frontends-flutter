@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class LogoWidget extends StatelessWidget {
-  const LogoWidget({Key? key}) : super(key: key);
+  final double size;
+  const LogoWidget({
+    Key? key,
+    this.size = 150,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FlutterLogo();
+    return FlutterLogo(
+      size: size,
+    );
   }
 }

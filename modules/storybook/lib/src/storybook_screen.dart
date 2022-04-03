@@ -45,7 +45,7 @@ class _StoryBookScreenState extends State<StoryBookScreen> {
   List<Story> _getWidgetsStory() => [
         Story(
           name: 'Widgets/LogoWidget',
-          builder: (_) => SizedBox(width: 300, child: LogoWidget()),
+          builder: (_) => LogoWidget(),
         ),
       ];
 
@@ -60,10 +60,11 @@ class _StoryBookScreenState extends State<StoryBookScreen> {
           ),
         ),
         Story(
-            name: 'Screens/Dashboard',
-            builder: (_) => Builder(builder: (context) {
-                  return DashboardScreen();
-                })),
+          name: 'Screens/Dashboard',
+          builder: (_) => Builder(builder: (context) {
+            return DashboardScreen();
+          }),
+        ),
       ];
 
   List<Story> _getMaterialStory() => [
