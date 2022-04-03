@@ -63,10 +63,10 @@ android {
 
     signingConfigs {
         release {
-            keyAlias keystoreProperties.getProperty('keyAlias')
-            keyPassword keystoreProperties.getProperty('keyPassword')
-            storeFile file(keystoreProperties.getProperty('storeFile'))
-            storePassword keystoreProperties.getProperty('storePassword')
+            keyAlias "FlutterFightKIT"
+            keyPassword "123456"
+            storePassword "123456"
+            storeFile file("flutter_fight_kit.keystore")
         }
     }
 
