@@ -29,40 +29,60 @@ class _StoryBookScreenState extends State<StoryBookScreen> {
         contentsSidePanel: true,
         knobsSidePanel: false,
       ),
-      initialStory: 'Widgets/LogoWidget',
+      initialStory: intStory,
       stories: _getStories(),
     );
   }
 
-  List<Story> _getStories() {
-    return [
-      Story(
-        name: 'Widgets/LogoWidget',
-        builder: (_) => LogoWidget(),
-      ),
-      // Story(
-      //   name: 'Widgets/OTP Widget',
-      //   description: 'OTP Widget',
-      //   builder: (_) => Padding(
-      //     padding: const EdgeInsets.only(top: 28.0),
-      //     child: OtpWidgetExampleBuilder(),
-      //   ),
-      // ),
+  List<Story> _getStories() => [
+        ..._getMaterialStory(),
+        ..._getWidgetsStory(),
+        ..._getScreenStory(),
+      ];
 
-      Story(
-        name: 'Screens/Empty',
-        builder: (_) => Scaffold(
-          appBar: AppBar(
-            title: const Text('Empty screen'),
-          ),
-          body: const Center(child: Text('body')),
+  String get intStory => 'Widgets/LogoWidget';
+
+  List<Story> _getWidgetsStory() => [
+        Story(
+          name: 'Widgets/LogoWidget',
+          builder: (_) => SizedBox(width: 300, child: LogoWidget()),
         ),
-      ),
-      Story(
-          name: 'Screens/Dashboard',
-          builder: (_) => Builder(builder: (context) {
-                return DashboardScreen();
-              })),
-    ];
-  }
+      ];
+
+  List<Story> _getScreenStory() => [
+        Story(
+          name: 'Screens/Empty',
+          builder: (_) => Scaffold(
+            appBar: AppBar(
+              title: const Text('Empty screen'),
+            ),
+            body: const Center(child: Text('body')),
+          ),
+        ),
+        Story(
+            name: 'Screens/Dashboard',
+            builder: (_) => Builder(builder: (context) {
+                  return DashboardScreen();
+                })),
+      ];
+
+  List<Story> _getMaterialStory() => [
+        Story(
+          name: 'DesignSystem/Button',
+          builder: (_) => Padding(
+            padding: EdgeInsets.only(top: 28.0),
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text('Click'),
+            ),
+          ),
+        ),
+        Story(
+          name: 'DesignSystem/TextField',
+          builder: (_) => Padding(
+            padding: EdgeInsets.only(top: 28.0),
+            child: TextField(),
+          ),
+        ),
+      ];
 }
