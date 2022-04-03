@@ -7,7 +7,12 @@
   
 ## Add new package
 ```
-  flutter create --template=package hello
+  flutter create --template=package ui
 ```
 
+## Add project 
+```
+flutter create --org com.yourdomain your_app_name
+
+```
 
