@@ -22,7 +22,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
           child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(S.of(context).helloWorld),
+          // Text(S.of(context).helloWorld),
+          Text(S.current.helloWorld),
           const Image(
             image: AssetImage(
               ImageConstants.payment,

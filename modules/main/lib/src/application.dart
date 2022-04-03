@@ -9,6 +9,10 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return buildMaterialApp(child: const DashboardScreen());
+  }
+
+  Widget buildMaterialApp({required Widget child}) {
     return MaterialApp(
       title: 'Flutter Demo',
       localizationsDelegates: const [
@@ -25,7 +29,7 @@ class Application extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const DashboardScreen(),
+      home: child,
     );
   }
 }
