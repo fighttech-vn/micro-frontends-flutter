@@ -1,28 +1,28 @@
-name: Pipeline Lint and Test
+# name: Pipeline Lint and Test
 
-on:
-  pull_request:
-  push:
-    branches: [develop, master]
+# on:
+#   pull_request:
+#   push:
+#     branches: [develop, master]
  
-jobs:
+# jobs:
 
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter analyze
+#   lint:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - uses: subosito/flutter-action@v1
+#         with:
+#           channel: "stable" # 'dev', 'alpha', default to: 'stable'
+#       - run: flutter pub get
+#       - run: flutter analyze
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter test
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - uses: subosito/flutter-action@v1
+#         with:
+#           channel: "stable" # 'dev', 'alpha', default to: 'stable'
+#       - run: flutter pub get
+#       - run: flutter test

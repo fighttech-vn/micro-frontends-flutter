@@ -1,59 +1,65 @@
 name: iOS & Android upload Firebase Distribution
  
+# on:
+#  push:
+#     branches:
+#       - qc
+
 on:
  push:
-    branches:
-      - qc
+   branches:
+     - feature/add-github-action
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter analyze
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         channel: "stable" # 'dev', 'alpha', default to: 'stable'
+  #     - run: flutter pub get
+  #     - run: flutter analyze
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter test
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         channel: "stable" # 'dev', 'alpha', default to: 'stable'
+  #     - run: flutter pub get
+  #     - run: flutter test
 
   build_apk:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 1. Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Ruby
+      - name: 2. Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.2'
+          bundler-cache: true
 
-      - name: Install Bundle
+      - name: 3. Install Bundle
         run: cd android && bundle install && cd ..
 
-      - name: Install Flutter
+      - name: 4. Install Flutter
         uses: subosito/flutter-action@v2.3.0
         with:
           channel: 'stable'
           cache: true
           cache-key: flutter
       
-      - name: Install Firebase Plugin
+      - name: 5. Install Firebase Plugin
         run: cd android && bundle exec fastlane add_plugin firebase_app_distribution && cd ..
 
-      - name: Build APK with Flutter
+      - name: 6. Build APK with Flutter
         run: flutter --version && flutter pub get && flutter build apk
 
-      - name: Upload Firebase Distribution
+      - name: 7. Upload Firebase Distribution
         run: cd android && bundle exec fastlane distribute_via_firebase && cd ..
         env:
           CONSOLE_FIREBASE_TOKEN: ${{ secrets.CONSOLE_FIREBASE_TOKEN }}    
@@ -61,46 +67,48 @@ jobs:
   build_ios:
     runs-on: macos-latest
     steps:
+      - name: 1. Checkout
       - uses: actions/checkout@v2
- 
-      - name: Set up ruby env
+  
+      - name: 2. Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7.2
+          ruby-version: '2.7.2'
           bundler-cache: true
-  
-      - name: Import Code-Signing Certificates
-        uses: Apple-Actions/import-codesign-certs@v1
-        with:
-          p12-file-base64: ${{ secrets.IOS_DIST_SIGNING_KEY }}
-          p12-password: ${{ secrets.IOS_DIST_SIGNING_KEY_PASSWORD }}
 
-      - name: Install Flutter
+      - name: 3. Install Bundle
+        run: cd ios && bundle install && cd ..
+
+      - name: 4. Install Flutter
         uses: subosito/flutter-action@v2.3.0
         with:
           channel: 'stable'
           cache: true
-          cache-key: flutter
+          cache-key: flutter    
 
-      - name: Install Bundle
-        run: cd ios/ && bundle install && cd ..
+      - name: 5. Install Firebase Plugin
+        run: cd ios/ && bundle exec fastlane add_plugin firebase_app_distribution && cd ..
 
-      - name: Update Code Sign
-        run: cd ios/ && bundle exec fastlane update_code_sign && cd ..
+      - name: 6. Import Code-Signing Certificates
+        uses: Apple-Actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ secrets.IOS_DIST_SIGNING_KEY }}
+          p12-password: ${{ secrets.IOS_DIST_SIGNING_KEY_PASSWORD }}    
+
+      - name: 7. Update Code Sign
+        run: cd ios && bundle exec fastlane update_code_sign && cd ..
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
           KEYCHAIN_PATH: ~/Library/Keychains/signing_temp.keychain-db
-          PROFILES_NAME: "Flutter FightKIT Distribution"
+          PROFILES_NAME: "Flutter FightKIT AppStore"
 
-      - name: Install Firebase Plugin
-        run: cd ios/ && bundle exec fastlane add_plugin firebase_app_distribution && cd ..
+      - name: 8. Build IPA with Flutter
+        run: flutter --version && flutter pub get && flutter build ipa --export-options-plist=ios/ExportOptions/ExportOptionsAppStore.plist
 
-      - name: Build IPA with Flutter
-        run: flutter --version && flutter pub get && flutter build ipa --export-options-plist=ios/ExportOptions/ExportOptionsAdhoc.plist
 
-      - name: Upload Firebase Distribution
+      - name: 9. Upload Firebase Distribution
         run: cd ios/ && bundle exec fastlane distribute_via_firebase && cd ..
         env:
           FASTLANE_USER: ${{ secrets.FASTLANE_USER }}

@@ -29,32 +29,33 @@ jobs:
   deploy:
     runs-on: macos-latest
     steps:
+      - name: Checkout
       - uses: actions/checkout@v2
   
-      - name: Set up ruby env
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7.2
+          ruby-version: '2.7.2'
           bundler-cache: true
-  
-      - name: Import Code-Signing Certificates
-        uses: Apple-Actions/import-codesign-certs@v1
-        with:
-          p12-file-base64: ${{ secrets.IOS_DIST_SIGNING_KEY }}
-          p12-password: ${{ secrets.IOS_DIST_SIGNING_KEY_PASSWORD }}
 
-      - name: Install and set Flutter version
+      - name: Install Bundle
+        run: cd ios && bundle install && cd ..
+
+      - name: Install Flutter
         uses: subosito/flutter-action@v2.3.0
         with:
           channel: 'stable'
           cache: true
-          cache-key: flutter
+          cache-key: flutter    
 
-      - name: Install Bundle
-        run: cd ios/ && bundle install && cd ..
+      - name: Import Code-Signing Certificates
+        uses: Apple-Actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ secrets.IOS_DIST_SIGNING_KEY }}
+          p12-password: ${{ secrets.IOS_DIST_SIGNING_KEY_PASSWORD }}    
 
       - name: Update Code Sign
-        run: cd ios/ && bundle exec fastlane update_code_sign && cd ..
+        run: cd ios && bundle exec fastlane update_code_sign && cd ..
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
