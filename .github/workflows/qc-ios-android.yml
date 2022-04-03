@@ -64,53 +64,53 @@ jobs:
         env:
           CONSOLE_FIREBASE_TOKEN: ${{ secrets.CONSOLE_FIREBASE_TOKEN }}    
 
-  build_ios:
-    runs-on: macos-latest
-    steps:
-      - name: 1. Checkout
-      - uses: actions/checkout@v2
+  # build_ios:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: 1. Checkout
+  #     - uses: actions/checkout@v2
   
-      - name: 2. Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '2.7.2'
-          bundler-cache: true
+  #     - name: 2. Setup Ruby
+  #       uses: ruby/setup-ruby@v1
+  #       with:
+  #         ruby-version: '2.7.2'
+  #         bundler-cache: true
 
-      - name: 3. Install Bundle
-        run: cd ios && bundle install && cd ..
+  #     - name: 3. Install Bundle
+  #       run: cd ios && bundle install && cd ..
 
-      - name: 4. Install Flutter
-        uses: subosito/flutter-action@v2.3.0
-        with:
-          channel: 'stable'
-          cache: true
-          cache-key: flutter    
+  #     - name: 4. Install Flutter
+  #       uses: subosito/flutter-action@v2.3.0
+  #       with:
+  #         channel: 'stable'
+  #         cache: true
+  #         cache-key: flutter    
 
-      - name: 5. Install Firebase Plugin
-        run: cd ios/ && bundle exec fastlane add_plugin firebase_app_distribution && cd ..
+  #     - name: 5. Install Firebase Plugin
+  #       run: cd ios/ && bundle exec fastlane add_plugin firebase_app_distribution && cd ..
 
-      - name: 6. Import Code-Signing Certificates
-        uses: Apple-Actions/import-codesign-certs@v1
-        with:
-          p12-file-base64: ${{ secrets.IOS_DIST_SIGNING_KEY }}
-          p12-password: ${{ secrets.IOS_DIST_SIGNING_KEY_PASSWORD }}    
+  #     - name: 6. Import Code-Signing Certificates
+  #       uses: Apple-Actions/import-codesign-certs@v1
+  #       with:
+  #         p12-file-base64: ${{ secrets.IOS_DIST_SIGNING_KEY }}
+  #         p12-password: ${{ secrets.IOS_DIST_SIGNING_KEY_PASSWORD }}    
 
-      - name: 7. Update Code Sign
-        run: cd ios && bundle exec fastlane update_code_sign && cd ..
-        env:
-          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
-          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
-          ASC_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
-          KEYCHAIN_PATH: ~/Library/Keychains/signing_temp.keychain-db
-          PROFILES_NAME: "Flutter FightKIT AppStore"
+  #     - name: 7. Update Code Sign
+  #       run: cd ios && bundle exec fastlane update_code_sign && cd ..
+  #       env:
+  #         ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+  #         ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+  #         ASC_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+  #         KEYCHAIN_PATH: ~/Library/Keychains/signing_temp.keychain-db
+  #         PROFILES_NAME: "Flutter FightKIT AppStore"
 
-      - name: 8. Build IPA with Flutter
-        run: flutter --version && flutter pub get && flutter build ipa --export-options-plist=ios/ExportOptions/ExportOptionsAppStore.plist
+  #     - name: 8. Build IPA with Flutter
+  #       run: flutter --version && flutter pub get && flutter build ipa --export-options-plist=ios/ExportOptions/ExportOptionsAppStore.plist
 
 
-      - name: 9. Upload Firebase Distribution
-        run: cd ios/ && bundle exec fastlane distribute_via_firebase && cd ..
-        env:
-          FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLICATION_SPECIFIC_PASSWORD }}
-          CONSOLE_FIREBASE_TOKEN: ${{ secrets.CONSOLE_FIREBASE_TOKEN }}
+  #     - name: 9. Upload Firebase Distribution
+  #       run: cd ios/ && bundle exec fastlane distribute_via_firebase && cd ..
+  #       env:
+  #         FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
+  #         FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLICATION_SPECIFIC_PASSWORD }}
+  #         CONSOLE_FIREBASE_TOKEN: ${{ secrets.CONSOLE_FIREBASE_TOKEN }}
