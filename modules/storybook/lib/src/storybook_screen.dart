@@ -1,3 +1,4 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:main/main.dart';
 import 'package:ui/ui.dart';
@@ -29,6 +30,15 @@ class _StoryBookScreenState extends State<StoryBookScreen> {
         contentsSidePanel: true,
         knobsSidePanel: false,
       ),
+      wrapperBuilder: (ct, wid) {
+        return MaterialApp(
+          theme: ThemeData().getTheme(Brightness.light),
+          darkTheme: ThemeData().getTheme(Brightness.dark),
+          debugShowCheckedModeBanner: false,
+          useInheritedMediaQuery: true,
+          home: Scaffold(body: Center(child: wid)),
+        );
+      },
       initialStory: intStory,
       stories: _getStories(),
     );

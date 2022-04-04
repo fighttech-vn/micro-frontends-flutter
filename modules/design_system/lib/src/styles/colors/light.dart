@@ -4,7 +4,7 @@ part of '../theme.dart';
 
 class ThemeColorLight extends ThemeColor {
   @override
-  Color get primary => Color.fromARGB(255, 223, 118, 5);
+  Color get primary => const Color(0xFFFFFFFF);
   @override
   Color get accent => const Color(0xFFFB6107);
   @override

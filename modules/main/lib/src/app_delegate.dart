@@ -11,8 +11,7 @@ class AppDelegate {
   Future<void> run(Map<String, dynamic> env) async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    final savedThemeMode =
-        await AdaptiveTheme.getThemeMode() ?? AdaptiveThemeMode.light;
+    final savedThemeMode = await AdaptiveTheme.getThemeMode();
 
     runZonedGuarded(() {
       runApp(Application(savedThemeMode: savedThemeMode));
