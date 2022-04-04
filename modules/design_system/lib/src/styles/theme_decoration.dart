@@ -1,12 +1,9 @@
 // Copyright 2021 Fighttech.vn, Ltd. All rights reserved.
 
-// ignore_for_file: unused_field
-
 part of 'theme.dart';
 
 class ThemeDecoration {
-  final ThemeColor _themeColor;
-  const ThemeDecoration(this._themeColor);
+  const ThemeDecoration();
 
   BoxDecoration get appBarGradient => BoxDecoration();
 
@@ -20,5 +17,4 @@ class ThemeDecoration {
           ],
         ),
       );
-
 }

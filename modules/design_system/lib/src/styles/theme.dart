@@ -10,22 +10,22 @@ part 'theme_display_metric.dart';
 part 'theme_text.dart';
 
 extension BrightnessExt on Brightness {
-  ThemeColor getThemeColor(Brightness theme) {
-    return theme == Brightness.light ? ThemeColorLight() : ThemeColorDark();
+  ThemeColor getThemeColor() {
+    return this == Brightness.light ? ThemeColorLight() : ThemeColorDark();
   }
 }
 
 extension ThemeDataExt on ThemeData {
   Brightness get themeMode => brightness;
 
-  ThemeText get themeText => ThemeText(themeColor);
-  ThemeDecoration get themeDecoration => ThemeDecoration(themeColor);
-  ThemeColor get themeColor => themeMode.getThemeColor(themeMode);
+  ThemeText get themeText => ThemeText();
+  ThemeDecoration get themeDecoration => ThemeDecoration();
+  ThemeColor get themeColor => themeMode.getThemeColor();
   ThemeDisplayMetric get themeDisplayMetric => ThemeDisplayMetric();
 
   ThemeData getTheme(Brightness theme) {
-    final dataThemeColor = themeMode.getThemeColor(theme);
-    final textTheme = ThemeText(dataThemeColor);
+    final dataThemeColor = theme.getThemeColor();
+    final textTheme = ThemeText();
     final kColorScheme = colorScheme.copyWith(
       primary: dataThemeColor.primary,
       brightness: theme,

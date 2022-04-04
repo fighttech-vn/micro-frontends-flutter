@@ -27,8 +27,8 @@ class Application extends StatelessWidget {
 
   Widget buildMaterialApp({
     required Widget child,
-    required ThemeData light,
-    required ThemeData dark,
+    ThemeData? light,
+    ThemeData? dark,
   }) {
     return MaterialApp(
       title: 'Flutter Demo',

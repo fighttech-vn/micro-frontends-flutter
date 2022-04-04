@@ -1,12 +1,9 @@
 // Copyright 2021 Fighttech.vn, Ltd. All rights reserved.
 
-// ignore_for_file: unused_field
-
 part of 'theme.dart';
 
 class ThemeText {
-  final ThemeColor _themeColor;
-  ThemeText(this._themeColor);
+  ThemeText();
 
   String titleFont = 'Comfortaa';
   String bodyFont = 'Noto Sans';
