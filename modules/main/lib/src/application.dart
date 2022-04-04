@@ -8,7 +8,9 @@ import 'main/dashboard_screen.dart';
 
 class Application extends StatelessWidget {
   final AdaptiveThemeMode? savedThemeMode;
-  const Application({Key? key, this.savedThemeMode}) : super(key: key);
+
+  const Application({Key? key, this.savedThemeMode})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

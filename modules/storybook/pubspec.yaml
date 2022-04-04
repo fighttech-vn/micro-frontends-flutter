@@ -32,6 +32,8 @@ dependencies:
     path: ../main
   localization:
     path: ../localization
+  design_system:
+    path: ../design_system    
 
   cupertino_icons: ^1.0.2
   storybook_flutter: ^0.10.1

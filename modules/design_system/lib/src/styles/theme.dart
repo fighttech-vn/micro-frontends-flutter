@@ -26,6 +26,7 @@ extension ThemeDataExt on ThemeData {
   ThemeData getTheme(Brightness theme) {
     final dataThemeColor = theme.getThemeColor();
     final textTheme = ThemeText();
+
     final kColorScheme = colorScheme.copyWith(
       primary: dataThemeColor.primary,
       brightness: theme,
@@ -67,12 +68,9 @@ extension ThemeDataExt on ThemeData {
       ),
       appBarTheme: AppBarTheme(
         titleTextStyle: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
           fontStyle: FontStyle.normal,
-          fontFamily: textTheme.titleFont,
-          color: Colors.white,
         ),
+        backgroundColor: dataThemeColor.primary
       ),
       inputDecorationTheme: InputDecorationTheme(
         isDense: true,
