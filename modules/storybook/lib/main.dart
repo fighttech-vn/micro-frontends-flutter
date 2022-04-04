@@ -4,5 +4,6 @@ import 'package:main/main.dart';
 import 'src/storybook_screen.dart';
 
 void main() {
-  runApp(Application().buildMaterialApp(child: const StoryBookScreen()));
+  runApp(const Application().buildMaterialApp(
+      child: StoryBookScreen(), dark: ThemeData(), light: ThemeData()));
 }
