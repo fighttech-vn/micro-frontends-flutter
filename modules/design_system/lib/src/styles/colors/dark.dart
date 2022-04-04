@@ -11,10 +11,6 @@ class ThemeColorDark extends ThemeColor {
   Color get scaffoldBackground => const Color(0xFF48484A);
   @override
   Color get background => const Color(0xFF201F1F);
-  @override
-  Color get backgroundSchema => const Color(0xFF0e0324);
-  @override
-  Color get primaryVariant => const Color(0xFF807E7E);
 
   // Bottom Navigation Bar
   @override

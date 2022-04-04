@@ -7,8 +7,6 @@ abstract class ThemeColor {
   Color get accent;
   Color get scaffoldBackground;
   Color get background;
-  Color get backgroundSchema;
-  Color get primaryVariant;
 
   // BottomNavigationBar
   Color get bottomBarIconSelected;

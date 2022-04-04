@@ -11,10 +11,6 @@ class ThemeColorLight extends ThemeColor {
   Color get scaffoldBackground => const Color(0xFFE9E9E9);
   @override
   Color get background => const Color(0xFFFFFFFF);
-  @override
-  Color get backgroundSchema => const Color(0xFFFFFFFF);
-  @override
-  Color get primaryVariant => const Color(0xFF007200);
 
   // Bottom Navigation Bar
   @override
