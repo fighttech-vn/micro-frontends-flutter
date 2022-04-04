@@ -13,4 +13,7 @@ abstract class ThemeColor {
   Color get bottomBarIconUnSelected;
   Color get bottomBarSelectedItemColor;
   Color get bottomBarUnselectedItemColor;
+
+  //
+  Color get appbarTitleColor;
 }

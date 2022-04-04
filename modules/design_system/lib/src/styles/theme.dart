@@ -16,26 +16,20 @@ extension BrightnessExt on Brightness {
 }
 
 extension ThemeDataExt on ThemeData {
-  Brightness get themeMode => brightness;
-
-  ThemeText get themeText => ThemeText();
+  ThemeColor get themeColor => brightness.getThemeColor();
   ThemeDecoration get themeDecoration => ThemeDecoration();
-  ThemeColor get themeColor => themeMode.getThemeColor();
   ThemeDisplayMetric get themeDisplayMetric => ThemeDisplayMetric();
 
   ThemeData getTheme(Brightness theme) {
     final dataThemeColor = theme.getThemeColor();
-    final textTheme = ThemeText();
-
-    final kColorScheme = colorScheme.copyWith(
-      primary: dataThemeColor.primary,
-      brightness: theme,
-    );
 
     return ThemeData(
-      fontFamily: textTheme.bodyFont,
+      fontFamily: ThemeText().bodyFont,
       brightness: theme,
-      colorScheme: kColorScheme,
+      colorScheme: colorScheme.copyWith(
+        primary: dataThemeColor.primary,
+        brightness: theme,
+      ),
       backgroundColor: dataThemeColor.background,
       primaryColor: dataThemeColor.primary,
       scaffoldBackgroundColor: dataThemeColor.scaffoldBackground,
@@ -69,8 +63,9 @@ extension ThemeDataExt on ThemeData {
       appBarTheme: AppBarTheme(
         titleTextStyle: TextStyle(
           fontStyle: FontStyle.normal,
+          color: themeColor.appbarTitleColor,
         ),
-        backgroundColor: dataThemeColor.primary
+        backgroundColor: dataThemeColor.primary,
       ),
       inputDecorationTheme: InputDecorationTheme(
         isDense: true,

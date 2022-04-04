@@ -21,4 +21,7 @@ class ThemeColorDark extends ThemeColor {
   Color get bottomBarSelectedItemColor => primary;
   @override
   Color get bottomBarUnselectedItemColor => const Color(0xFF9D9D9D);
+
+  @override
+  Color get appbarTitleColor => Color(0xFFFFFFFF);
 }
