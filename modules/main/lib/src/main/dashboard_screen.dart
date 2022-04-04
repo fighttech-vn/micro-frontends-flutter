@@ -21,6 +21,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           IconButton(
             onPressed: onTapChangeTheme,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : Colors.black,
             icon: Icon(
               Theme.of(context).brightness == Brightness.dark
                   ? Icons.light_mode

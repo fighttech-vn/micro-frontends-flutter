@@ -7,6 +7,7 @@ Live: https://flutter-fightkit.web.app/
  - [x] Flutter lint
  - [ ] Pipeline
  - [x] Storybook isolate dependencies for screen and ui
+ - [x] Theme dark mode and light mode
   
 ## Add new package
 ```
