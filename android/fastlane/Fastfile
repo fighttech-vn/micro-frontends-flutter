@@ -1,0 +1,32 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Submit APK to Firebase Distribution"
+  lane :distribute_via_firebase do
+    firebase_app_distribution(
+      app: '1:876997828344:android:715d3afbc1548b291aa50d',
+      groups: "Tester",
+      firebase_cli_token: ENV["CONSOLE_FIREBASE_TOKEN"],
+      release_notes: sh("git log -1 --pretty='%s'"),
+      apk_path: "../build/app/outputs/flutter-apk/app-release.apk"
+    )
+  end
+end
+
+
+

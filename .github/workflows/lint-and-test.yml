@@ -1,0 +1,54 @@
+name: Pipeline Lint and Test
+ 
+on:
+  # pull_request:
+  # push:
+  #   branches: [develop, master]
+  workflow_dispatch:
+ 
+jobs:
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable" # 'dev', 'alpha', default to: 'stable'
+      - run: flutter pub get
+      - run: flutter analyze
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable" # 'dev', 'alpha', default to: 'stable'
+      - run: flutter pub get
+      - run: flutter test --coverage
+
+        # Run widget tests on design_system module.
+      - name: Run tests on design_system module
+        working-directory: ./modules/design_system
+        run: flutter test --coverage  
+
+        # Run widget tests on localization module.
+      - name: Run tests on localization module
+        working-directory: ./modules/localization
+        run: flutter test --coverage  
+
+        # Run widget tests on main module.
+      - name: Run tests on main module
+        working-directory: ./modules/main
+        run: flutter test --coverage  
+
+        # Run widget tests on ui module.
+      - name: Run tests on ui module
+        working-directory: ./modules/ui
+        run: flutter test --coverage             
+
+        # Run widget tests on storybook module.
+      - name: Run tests on storybook module
+        working-directory: ./modules/storybook
+        run: flutter test --coverage                          
