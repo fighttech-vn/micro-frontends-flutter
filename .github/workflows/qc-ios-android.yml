@@ -29,8 +29,8 @@ jobs:
           channel: 'stable'
           cache: true
           cache-key: flutter
-      - run: flutter analyze
-      - run: flutter pub get && flutter test --coverage          
+      # - run: flutter analyze
+      # - run: flutter pub get && flutter test --coverage          
       
       - name: 5. Install Firebase Plugin
         run: cd android && bundle exec fastlane add_plugin firebase_app_distribution && cd ..
@@ -76,8 +76,8 @@ jobs:
           channel: 'stable'
           cache: true
           cache-key: flutter    
-      - run: flutter analyze
-      - run: flutter pub get && flutter test --coverage
+      # - run: flutter analyze
+      # - run: flutter pub get && flutter test --coverage
 
       - name: 5. Install Firebase Plugin
         run: cd ios && bundle exec fastlane add_plugin firebase_app_distribution && cd ..
