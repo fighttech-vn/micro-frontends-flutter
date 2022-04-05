@@ -1,31 +1,32 @@
 name: iOS & Android upload Firebase Distribution
  
 on:
- push:
+  push:
     branches:
       - qc
-
+  workflow_dispatch:
+ 
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter analyze
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         channel: "stable" # 'dev', 'alpha', default to: 'stable'
+  #     - run: flutter pub get
+  #     - run: flutter analyze
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter test
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         channel: "stable" # 'dev', 'alpha', default to: 'stable'
+  #     - run: flutter pub get
+  #     - run: flutter test
 
   build_apk:
     runs-on: ubuntu-latest
@@ -105,7 +106,7 @@ jobs:
 
 
       - name: 9. Upload Firebase Distribution
-        run: cd ios/ && bundle exec fastlane distribute_via_firebase && cd ..
+        run: cd ios && bundle exec fastlane distribute_via_firebase && cd ..
         env:
           FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLICATION_SPECIFIC_PASSWORD }}
