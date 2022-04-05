@@ -1,9 +1,7 @@
 name: iOS build & upload
  
 on:
-  push:
-    branches:
-      - uat 
+ workflow_dispatch:
 
 jobs:
 
@@ -26,7 +24,7 @@ jobs:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
       - run: flutter pub get
       - run: flutter test
-      
+
   deploy:
     runs-on: macos-latest
     steps:
