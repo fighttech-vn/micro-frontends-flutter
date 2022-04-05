@@ -34,29 +34,40 @@ jobs:
       - name: 1. Checkout
         uses: actions/checkout@v2
 
-      - name: Post to a Slack channel
-        id: slack
-        uses: slackapi/slack-github-action@v1.16.0
-        with:
-          # Slack channel id, channel name, or user id to post message.
-          # See also: https://api.slack.com/methods/chat.postMessage#channels
-          channel-id: 'C03A62G5NRY'
-          # For posting a rich message using Block Kit
-          payload: |
-            {
-              "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-                  }
-                }
-              ]
-            }
+      # - name: Post to a Slack channel
+      #   id: slack
+      #   uses: slackapi/slack-github-action@v1.16.0
+      #   with:
+      #     # Slack channel id, channel name, or user id to post message.
+      #     # See also: https://api.slack.com/methods/chat.postMessage#channels
+      #     channel-id: 'C03A62G5NRY'
+      #     # For posting a rich message using Block Kit
+      #     payload: |
+      #       {
+      #         "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+      #         "blocks": [
+      #           {
+      #             "type": "section",
+      #             "text": {
+      #               "type": "mrkdwn",
+      #               "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+      #             }
+      #           }
+      #         ]
+      #       }
+      #   env:
+      #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }} 
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}  
+          SLACK_CHANNEL: mobile-ci
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
+          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: WikiallergiesBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} 
 
       # - name: 2. Setup Ruby
       #   uses: ruby/setup-ruby@v1
