@@ -58,7 +58,7 @@ jobs:
       #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
       - name: 3. Install Bundle
-        run: cd androids && bundle installs && cd ..
+        run: cd android
 
       - name: Step Failure
         if: ${{ failure() }}
