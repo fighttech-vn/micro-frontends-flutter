@@ -108,7 +108,7 @@ jobs:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLICATION_SPECIFIC_PASSWORD }}
           CONSOLE_FIREBASE_TOKEN: ${{ secrets.CONSOLE_FIREBASE_TOKEN }}
 
-      #  Container action is only supported on Linux
+      # 🔥 Container action is only supported on Linux 🔥
       # - name: 10. Notify
       #   if: ${{ always() }}
       #   uses: rtCamp/action-slack-notify@v2

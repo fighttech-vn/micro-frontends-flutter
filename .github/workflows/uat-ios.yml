@@ -59,14 +59,15 @@ jobs:
           ASC_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
           KEYCHAIN_PATH: ~/Library/Keychains/signing_temp.keychain-db
 
-      - name: 9. Notify
-        if: ${{ always() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: mobile-ci
-          SLACK_USERNAME: WikiallergiesBot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
-          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-          SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
-          SLACK_TITLE: Message
-          SLACK_MESSAGE: "Upload iOS to TestFlight ${{ job.status }}"
+      # 🔥 Container action is only supported on Linux 🔥
+      # - name: 9. Notify
+      #   if: ${{ always() }}
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_CHANNEL: mobile-ci
+      #     SLACK_USERNAME: WikiallergiesBot
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
+      #     SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+      #     SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
+      #     SLACK_TITLE: Message
+      #     SLACK_MESSAGE: "Upload iOS to TestFlight ${{ job.status }}"
