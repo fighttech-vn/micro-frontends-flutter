@@ -58,16 +58,21 @@ jobs:
       #   env:
       #     SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }} 
 
+     
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: mobile-ci
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
-          SLACK_MESSAGE: 'Post Content :rocket:'
+          SLACK_MESSAGE: "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
           SLACK_TITLE: Post Title
           SLACK_USERNAME: WikiallergiesBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} 
+
+      - name: 3. Install Bundle
+        run: cd android && bundle install && cd ..
+
 
       # - name: 2. Setup Ruby
       #   uses: ruby/setup-ruby@v1
