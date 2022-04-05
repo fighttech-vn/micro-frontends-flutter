@@ -3,7 +3,7 @@ name: iOS & Android upload Firebase Distribution
 on:
   push:
     branches:
-      - enhance/update-cicd-submit-app
+      - qc
   workflow_dispatch:
  
 
@@ -108,14 +108,15 @@ jobs:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLICATION_SPECIFIC_PASSWORD }}
           CONSOLE_FIREBASE_TOKEN: ${{ secrets.CONSOLE_FIREBASE_TOKEN }}
 
-      - name: 10. Notify
-        if: ${{ always() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: mobile-ci
-          SLACK_USERNAME: WikiallergiesBot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
-          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-          SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
-          SLACK_TITLE: Message
-          SLACK_MESSAGE: "Submit iOS to Firebase Ditribution ${{ job.status }}"
+      #  Container action is only supported on Linux
+      # - name: 10. Notify
+      #   if: ${{ always() }}
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_CHANNEL: mobile-ci
+      #     SLACK_USERNAME: WikiallergiesBot
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
+      #     SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+      #     SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
+      #     SLACK_TITLE: Message
+      #     SLACK_MESSAGE: "Submit iOS to Firebase Ditribution ${{ job.status }}"
