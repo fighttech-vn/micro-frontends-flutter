@@ -1,7 +1,9 @@
 name: iOS build & upload
  
 on:
- workflow_dispatch:
+ push:
+    branches:
+      - uat
 
 jobs:
 
