@@ -63,8 +63,8 @@ jobs:
 
       - name: 3. Install Bundle
         run: cd androids && bundle installs && cd ..
-
-      - name: Slack Notification
+      - name: My backup step
+        if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: mobile-ci
@@ -74,6 +74,7 @@ jobs:
           SLACK_TITLE: Post Title
           SLACK_USERNAME: WikiallergiesBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} 
+          
       # - name: 2. Setup Ruby
       #   uses: ruby/setup-ruby@v1
       #   with:
