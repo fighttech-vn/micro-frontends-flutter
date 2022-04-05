@@ -61,28 +61,17 @@ jobs:
         run: cd android
 
       - name: Step Failure
-        if: ${{ failure() }}
+        if: ${{ always() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: mobile-ci
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
-          SLACK_MESSAGE: "FAILURE: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+          SLACK_MESSAGE: "status: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
           SLACK_TITLE: Post Title
           SLACK_USERNAME: WikiallergiesBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-      - name: Step Success
-        if: ${{ success() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_CHANNEL: mobile-ci
-          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
-          SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
-          SLACK_MESSAGE: "SUCCESS: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
-          SLACK_TITLE: Post Title
-          SLACK_USERNAME: WikiallergiesBot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
       # - name: 2. Setup Ruby
       #   uses: ruby/setup-ruby@v1
