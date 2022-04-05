@@ -3,7 +3,7 @@ name: iOS & Android upload Firebase Distribution
 on:
   push:
     branches:
-      - qc
+      - enhance/update-cicd-submit-app
   workflow_dispatch:
  
 
