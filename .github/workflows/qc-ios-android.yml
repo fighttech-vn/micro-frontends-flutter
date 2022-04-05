@@ -60,17 +60,17 @@ jobs:
       - name: 3. Install Bundle
         run: cd androids
 
-      - name: Step Failure
+      - name: 10. Notify
         if: ${{ always() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: mobile-ci
+          SLACK_USERNAME: WikiallergiesBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
-          SLACK_MESSAGE: "status: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
           SLACK_TITLE: Post Title
-          SLACK_USERNAME: WikiallergiesBot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: "Submit iOS to Firebase Ditribution ${{ toJson(job) }}"
 
 
       # - name: 2. Setup Ruby
