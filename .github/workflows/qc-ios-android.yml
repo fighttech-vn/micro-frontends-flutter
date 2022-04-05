@@ -71,7 +71,7 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }} 
 
       - name: 3. Install Bundle
-        run: cd android && bundle install && cd ..
+        run: cd androids && bundle installs && cd ..
 
 
       # - name: 2. Setup Ruby
