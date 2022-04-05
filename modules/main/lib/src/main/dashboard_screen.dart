@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,12 +18,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),
+        actions: [
+          IconButton(
+            onPressed: onTapChangeTheme,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : Colors.black,
+            icon: Icon(
+              Theme.of(context).brightness == Brightness.dark
+                  ? Icons.light_mode
+                  : Icons.dark_mode,
+            ),
+          ),
+        ],
       ),
       body: Center(
           child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(S.of(context).helloWorld),
+          // Text(S.of(context).helloWorld),
+          Text(S.current.helloWorld),
           const Image(
             image: AssetImage(
               ImageConstants.payment,
@@ -45,5 +60,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ],
       )),
     );
+  }
+
+  void onTapChangeTheme() {
+    if (Theme.of(context).brightness == Brightness.dark) {
+      AdaptiveTheme.of(context).setLight();
+    } else {
+      AdaptiveTheme.of(context).setDark();
+    }
   }
 }
