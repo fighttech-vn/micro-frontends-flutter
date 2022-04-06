@@ -7,10 +7,10 @@ void main() {
   testWidgets('Should render application support localized',
       (WidgetTester tester) async {
     // Given
-    final app = LogoWidget();
+    const app = LogoWidget();
 
     // When
-    await tester.pumpWidget(MaterialApp(home: app));
+    await tester.pumpWidget(const MaterialApp(home: app));
 
     // Then
     expect(find.byType(FlutterLogo), findsOneWidget);

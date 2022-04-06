@@ -5,7 +5,7 @@ part of 'theme.dart';
 class ThemeDecoration {
   const ThemeDecoration();
 
-  BoxDecoration get appBarGradient => BoxDecoration();
+  BoxDecoration get appBarGradient => const BoxDecoration();
 
   BoxDecoration textShadow(BuildContext context) => BoxDecoration(
         gradient: LinearGradient(

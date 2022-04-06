@@ -1,8 +1,8 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:main/main.dart';
-import 'package:ui/ui.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
+import 'package:ui/ui.dart';
 
 class StoryBookScreen extends StatefulWidget {
   static const routeName = '/story-book';
@@ -64,7 +64,7 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
   List<Story> getWidgetsStory() => [
         Story(
           name: 'Widgets/LogoWidget',
-          builder: (_) => LogoWidget(),
+          builder: (_) => const LogoWidget(),
         ),
       ];
 
@@ -82,7 +82,7 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
         Story(
           name: 'Screens/Dashboard',
           builder: (_) => Builder(builder: (context) {
-            return DashboardScreen();
+            return const DashboardScreen();
           }),
         ),
       ];
@@ -92,29 +92,29 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
         Story(
           name: 'DesignSystem/Button',
           builder: (_) => Padding(
-            padding: EdgeInsets.only(top: 28.0),
+            padding: const EdgeInsets.only(top: 28.0),
             child: ElevatedButton(
               onPressed: () {},
-              child: Text('Click'),
+              child: const Text('Click'),
             ),
           ),
         ),
         Story(
           name: 'DesignSystem/ButtonIcon',
           builder: (_) => Padding(
-            padding: EdgeInsets.only(top: 28.0),
+            padding: const EdgeInsets.only(top: 28.0),
             child: ElevatedButton(
               onPressed: () {},
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
-                children: [
+                children: const [
                   Icon(
                     Icons.search,
                     size: 16,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 4.0),
+                    padding: EdgeInsets.only(left: 4.0),
                     child: Text('Find the nearest allergist'),
                   ),
                 ],
@@ -124,7 +124,7 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
         ),
         Story(
           name: 'DesignSystem/TextField',
-          builder: (_) => Padding(
+          builder: (_) => const Padding(
             padding: EdgeInsets.only(top: 28.0),
             child: TextField(),
           ),

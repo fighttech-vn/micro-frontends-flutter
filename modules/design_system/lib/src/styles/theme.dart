@@ -17,8 +17,8 @@ extension BrightnessExt on Brightness {
 
 extension ThemeDataExt on ThemeData {
   ThemeColor get themeColor => brightness.getThemeColor();
-  ThemeDecoration get themeDecoration => ThemeDecoration();
-  ThemeDisplayMetric get themeDisplayMetric => ThemeDisplayMetric();
+  ThemeDecoration get themeDecoration => const ThemeDecoration();
+  ThemeDisplayMetric get themeDisplayMetric => const ThemeDisplayMetric();
 
   ThemeData getTheme(Brightness theme) {
     final dataThemeColor = theme.getThemeColor();
