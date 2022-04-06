@@ -6,6 +6,7 @@ analyzer:
   errors:
     todo: ignore
   exclude:
+    - modules/localization/lib/generated/
 
 linter:
   rules:

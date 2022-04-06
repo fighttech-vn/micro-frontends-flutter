@@ -3,5 +3,7 @@
 part of 'theme.dart';
 
 class ThemeDisplayMetric {
-  double cardBorderRadius = 18.0;
+  const ThemeDisplayMetric();
+  
+  double get cardBorderRadius => 18.0;
 }
