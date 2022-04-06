@@ -1,61 +1,43 @@
 name: iOS build & upload
  
 on:
- push:
+  push:
     branches:
       - uat
+  workflow_dispatch:
 
 jobs:
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter analyze
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter test
-
   deploy:
     runs-on: macos-latest
     steps:
-      - name: Checkout
+      - name: 1. Checkout
         uses: actions/checkout@v2
-  
-      - name: Setup Ruby
+
+      - name: 2. Install Flutter
+        uses: subosito/flutter-action@v2.3.0
+        with:
+          channel: 'stable'
+          cache: true
+          cache-key: flutter 
+      # - run: flutter analyze
+      # - run: flutter pub get && flutter test --coverage
+
+      - name: 3. Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.2'
           bundler-cache: true
 
-      - name: Install Bundle
+      - name: 4. Install Bundle
         run: cd ios && bundle install && cd ..
 
-      - name: Install Flutter
-        uses: subosito/flutter-action@v2.3.0
-        with:
-          channel: 'stable'
-          cache: true
-          cache-key: flutter    
-
-      - name: Import Code-Signing Certificates
+      - name: 5. Import Code-Signing Certificates
         uses: Apple-Actions/import-codesign-certs@v1
         with:
           p12-file-base64: ${{ secrets.IOS_DIST_SIGNING_KEY }}
           p12-password: ${{ secrets.IOS_DIST_SIGNING_KEY_PASSWORD }}    
 
-      - name: Update Code Sign
+      - name: 6. Update Code Sign
         run: cd ios && bundle exec fastlane update_code_sign && cd ..
         env:
           ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
@@ -64,10 +46,10 @@ jobs:
           KEYCHAIN_PATH: ~/Library/Keychains/signing_temp.keychain-db
           PROFILES_NAME: "Flutter FightKIT AppStore"
 
-      - name: Build IPA with Flutter
+      - name: 7. Build IPA with Flutter
         run: flutter --version && flutter pub get && flutter build ipa --export-options-plist=ios/ExportOptions/ExportOptionsAppStore.plist
 
-      - name: Upload TestFlight
+      - name: 8. Upload TestFlight
         run: cd ios/ && bundle exec fastlane upload_release && cd ..
         env:
           FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
@@ -76,3 +58,16 @@ jobs:
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
           KEYCHAIN_PATH: ~/Library/Keychains/signing_temp.keychain-db
+
+      # 🔥 Container action is only supported on Linux 🔥
+      # - name: 9. Notify
+      #   if: ${{ always() }}
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_CHANNEL: mobile-ci
+      #     SLACK_USERNAME: WikiallergiesBot
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
+      #     SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+      #     SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
+      #     SLACK_TITLE: Message
+      #     SLACK_MESSAGE: "Upload iOS to TestFlight ${{ job.status }}"

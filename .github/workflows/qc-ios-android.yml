@@ -1,32 +1,13 @@
 name: iOS & Android upload Firebase Distribution
  
 on:
- push:
+  push:
     branches:
       - qc
-
+  workflow_dispatch:
+ 
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter analyze
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      - run: flutter pub get
-      - run: flutter test
-
   build_apk:
     runs-on: ubuntu-latest
     steps:
@@ -48,6 +29,8 @@ jobs:
           channel: 'stable'
           cache: true
           cache-key: flutter
+      # - run: flutter analyze
+      # - run: flutter pub get && flutter test --coverage          
       
       - name: 5. Install Firebase Plugin
         run: cd android && bundle exec fastlane add_plugin firebase_app_distribution && cd ..
@@ -59,6 +42,18 @@ jobs:
         run: cd android && bundle exec fastlane distribute_via_firebase && cd ..
         env:
           CONSOLE_FIREBASE_TOKEN: ${{ secrets.CONSOLE_FIREBASE_TOKEN }}    
+
+      - name: 8. Notify
+        if: ${{ always() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: mobile-ci
+          SLACK_USERNAME: WikiallergiesBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
+          SLACK_TITLE: Message
+          SLACK_MESSAGE: "Submit Android to Firebase Ditribution ${{ job.status }}" 
 
   build_ios:
     runs-on: macos-latest
@@ -81,6 +76,8 @@ jobs:
           channel: 'stable'
           cache: true
           cache-key: flutter    
+      # - run: flutter analyze
+      # - run: flutter pub get && flutter test --coverage
 
       - name: 5. Install Firebase Plugin
         run: cd ios && bundle exec fastlane add_plugin firebase_app_distribution && cd ..
@@ -98,15 +95,28 @@ jobs:
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
           ASC_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
           KEYCHAIN_PATH: ~/Library/Keychains/signing_temp.keychain-db
-          PROFILES_NAME: "Flutter FightKIT AppStore"
+          PROFILES_NAME: "Flutter FightKIT Distribution"  # 🔥 IMPORTANT: update name of provisioning 🔥
 
       - name: 8. Build IPA with Flutter
-        run: flutter --version && flutter pub get && flutter build ipa --export-options-plist=ios/ExportOptions/ExportOptionsAppStore.plist
+        run: flutter --version && flutter pub get && flutter build ipa --export-options-plist=ios/ExportOptions/ExportOptionsAdhoc.plist
 
 
       - name: 9. Upload Firebase Distribution
-        run: cd ios/ && bundle exec fastlane distribute_via_firebase && cd ..
+        run: cd ios && bundle exec fastlane distribute_via_firebase && cd ..
         env:
           FASTLANE_USER: ${{ secrets.FASTLANE_USER }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.APPLICATION_SPECIFIC_PASSWORD }}
           CONSOLE_FIREBASE_TOKEN: ${{ secrets.CONSOLE_FIREBASE_TOKEN }}
+
+      # 🔥 Container action is only supported on Linux 🔥
+      # - name: 10. Notify
+      #   if: ${{ always() }}
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_CHANNEL: mobile-ci
+      #     SLACK_USERNAME: WikiallergiesBot
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}        
+      #     SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+      #     SLACK_ICON: https://fighttech.vn/wikiallergies/assets/images/logo.jpg
+      #     SLACK_TITLE: Message
+      #     SLACK_MESSAGE: "Submit iOS to Firebase Ditribution ${{ job.status }}"
