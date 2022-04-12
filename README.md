@@ -5,9 +5,11 @@ Live: https://flutter-fightkit.web.app/
  - [x] Get assets multi packages
  - [x] Localize to package
  - [x] Flutter lint
- - [ ] Pipeline
+ - [x] Pipeline
  - [x] Storybook isolate dependencies for screen and ui
  - [x] Theme dark mode and light mode
+ - [ ] Bloc Cross domain
+ - [ ] Router for Navigator
   
 ## Add new package
 ```
