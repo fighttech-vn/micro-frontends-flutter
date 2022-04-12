@@ -20,3 +20,7 @@ flutter create --org com.yourdomain your_app_name
 
 ```
 
+# Architecture
+
+![Alt text](docs/Architecture.svg)
+

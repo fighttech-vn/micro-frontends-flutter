@@ -1,4 +1,4 @@
 # Wikiallergies Architecture
 
-![Alt text](./Wiki-Architecture.svg)
-<img src="./Wiki-Architecture.svg">
+![Alt text](./Architecture.svg)
+<img src="./Architecture.svg">
