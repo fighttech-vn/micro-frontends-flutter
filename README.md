@@ -14,6 +14,8 @@ Live: https://flutter-fightkit.web.app/
 ## Add new package
 ```
   flutter create --template=package hello
+
+  flutter create --template=package app_engine
 ```
 
 ## Add project 
