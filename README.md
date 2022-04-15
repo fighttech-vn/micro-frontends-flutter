@@ -8,7 +8,7 @@ Live: https://flutter-fightkit.web.app/
  - [x] Pipeline
  - [x] Storybook isolate dependencies for screen and ui
  - [x] Theme dark mode and light mode
- - [ ] Bloc Cross domain
+ - [x] Communicate Cross domain (MultiBlocProvicer)
  - [ ] Router for Navigator
   
 ## Add new package
@@ -29,3 +29,12 @@ flutter create --org com.yourdomain your_app_name
 
 ![Alt text](docs/Architecture.svg)
 
+
+# API
+
+```
+curl --location --request GET 'https://randomuser.me/api/' \
+--header 'authority: randomuser.me' \
+--header 'accept: application/json' \
+--header 'x-requested-with: XMLHttpRequest'
+```
