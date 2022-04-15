@@ -158,10 +158,10 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
             future: TestHelper.loadString(
                 'packages/app_mock_api/assets/onboarding/sign_in.json'),
             builder: (context, snapshot) {
-              final dio = Dio();
-              dio.httpClientAdapter = MockAdapter({
-                '/sign-in': snapshot.data!,
-              });
+              final dio = Dio()
+                ..httpClientAdapter = MockAdapter({
+                  '/sign-in': snapshot.data!,
+                });
 
               return BlocProvider<SignInBloc>(
                 create: (context) => OnboardingFactory.createSignInBloc(
