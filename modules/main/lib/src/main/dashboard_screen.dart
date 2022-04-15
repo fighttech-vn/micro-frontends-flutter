@@ -1,11 +1,15 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:app_engine/app_engine.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:localization/generated/l10n.dart';
 import 'package:lottie/lottie.dart';
+import 'package:profile/profile.dart';
 
 class DashboardScreen extends StatefulWidget {
+  static const String routeName = 'dashboard';
+
   const DashboardScreen({Key? key}) : super(key: key);
 
   @override
@@ -57,6 +61,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
             package: 'design_system',
             width: 72,
           ),
+           const UserAvatar(),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed('/edit-profile');
+            },
+            child: const Text('/edit-profile'),
+          ),
+
+          const ProfileScreen(),
         ],
       )),
     );

@@ -11,10 +11,11 @@ class UserAvatar extends StatelessWidget {
     return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         if (state is UserLoadedInformation) {
-          return Image.network(
-            state.user.picture,
-            width: 48,
-          );
+          // return Image.network(
+          //   state.user.picture,
+          //   width: 48,
+          // );
+          return Text(state.user.email);
         }
         return const SizedBox();
       },

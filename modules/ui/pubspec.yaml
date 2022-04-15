@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  jumping_dot: ^0.0.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
