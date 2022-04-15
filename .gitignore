@@ -48,3 +48,4 @@ GeneratedPluginRegistrant.swift
 modules/storybook/windows/flutter/generated_plugin_registrant.cc
 modules/storybook/windows/flutter/generated_plugin_registrant.h
 modules/storybook/windows/flutter/generated_plugins.cmake
+modules/storybook/.firebase/
