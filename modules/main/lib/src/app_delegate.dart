@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:app_engine/app_engine.dart';
 import 'package:flutter/material.dart';
 
 import 'application.dart';
@@ -14,7 +15,10 @@ class AppDelegate {
     final savedThemeMode = await AdaptiveTheme.getThemeMode();
 
     runZonedGuarded(() {
-      runApp(Application(savedThemeMode: savedThemeMode));
+      runApp(Application(
+        savedThemeMode: savedThemeMode,
+        userBloc: UserBloc(),
+      ));
     }, (_, __) {});
   }
 }

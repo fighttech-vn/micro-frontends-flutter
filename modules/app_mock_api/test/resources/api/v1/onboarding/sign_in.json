@@ -1,0 +1,20 @@
+{
+  "s": 200,
+  "msg": "Success",
+  "data": {
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHBzOi8vd2lraWFsbGVyZ2llcy5uZXQvYXBpL3YxL3NpZ24taW4iLCJpYXQiOjE2NDk1MjYyNzQsImV4cCI6MTY0OTUzMzQ3NCwibmJmIjoxNjQ5NTI2Mjc0LCJqdGkiOiJlQm53RFBrRkJVbTByaGwxIn0.iCpopSYtryqYd8dYjNIbU_AYsnSa8ovD4w2tnJ081ds",
+    "user": {
+      "role": "physician",
+      "id": 1,
+      "firstName": "Doanh",
+      "lastName": "Nguyen",
+      "fullName": "Doanh Nguyen, MD FAAAAI",
+      "avatar": "https://wikiallergies.net/images/avatar/5c38cd5c5f458.png",
+      "userName": "md-faaaai-doanh-nguyen",
+      "email": "doanh@wikiallergies.com",
+      "wikiEmail": "doanh@wikiallergies.com",
+      "npi": "1760640304",
+      "taxonomy_code": "[{\"code\":\"207KA0200X\",\"description\":\"Allergy\"},{\"code\":\"207K00000X\",\"description\":\"Allergy & Immunology\"},{\"code\":\"2080P0201X\",\"description\":\"Pediatric Allergy & Immunology\"},{\"code\":\"207KI0005X\",\"description\":\"Clinical & Laboratory Immunology\"},{\"code\":\"207RA0201X\",\"description\":\"Internal Medicine Allergy & Immunology\"}]"
+    }
+  }
+}

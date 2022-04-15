@@ -1,0 +1,66 @@
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Alfonso",
+        "last": "Cortes"
+      },
+      "location": {
+        "street": {
+          "number": 9866,
+          "name": "Calle de Pedro Bosch"
+        },
+        "city": "Lorca",
+        "state": "Ceuta",
+        "country": "Spain",
+        "postcode": 64281,
+        "coordinates": {
+          "latitude": "-24.1416",
+          "longitude": "-146.3693"
+        },
+        "timezone": {
+          "offset": "+10:00",
+          "description": "Eastern Australia, Guam, Vladivostok"
+        }
+      },
+      "email": "alfonso.cortes@example.com",
+      "login": {
+        "uuid": "12ff9779-97a6-4796-bd36-20eea9ead0fe",
+        "username": "browngorilla241",
+        "password": "start1",
+        "salt": "JCOzBLxp",
+        "md5": "5aa8f37f14fd06f5d6179a535d954c63",
+        "sha1": "064f1908eb339175a7eed06eb0f6f1c0776d3b5c",
+        "sha256": "4271116671f59b999888e268c33e0a7d62eae51116fceb6b5de2234faa9dd2ea"
+      },
+      "dob": {
+        "date": "1947-09-10T10:17:13.926Z",
+        "age": 75
+      },
+      "registered": {
+        "date": "2018-07-17T02:09:54.114Z",
+        "age": 4
+      },
+      "phone": "965-968-099",
+      "cell": "677-918-231",
+      "id": {
+        "name": "DNI",
+        "value": "32202970-W"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/91.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/91.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/91.jpg"
+      },
+      "nat": "ES"
+    }
+  ],
+  "info": {
+    "seed": "ae9d3d210750686e",
+    "results": 1,
+    "page": 1,
+    "version": "1.3"
+  }
+}

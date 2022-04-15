@@ -43,6 +43,16 @@ extension ThemeDataExt on ThemeData {
         unselectedIconTheme: bottomNavigationBarTheme.unselectedIconTheme
             ?.copyWith(color: dataThemeColor.bottomBarIconUnSelected),
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          minimumSize: const Size.fromHeight(40),
+          padding: EdgeInsets.zero,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+          ),
+        ),
+      ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           primary: const Color(0xFF007200),
@@ -70,13 +80,18 @@ extension ThemeDataExt on ThemeData {
       inputDecorationTheme: InputDecorationTheme(
         isDense: true,
         contentPadding: const EdgeInsets.symmetric(
-          vertical: 3,
-          horizontal: 6,
+          vertical: 11,
+          horizontal: 10,
         ),
-        border: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: dataThemeColor.primary,
-          ),
+        filled: true,
+        fillColor: dataThemeColor.background,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide.none,
         ),
       ),
     );

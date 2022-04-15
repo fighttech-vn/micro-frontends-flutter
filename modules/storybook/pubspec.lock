@@ -8,6 +8,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.1"
+  app_engine:
+    dependency: "direct main"
+    description:
+      path: "../app_engine"
+      relative: true
+    source: path
+    version: "0.0.1"
+  app_mock_api:
+    dependency: "direct main"
+    description:
+      path: "../app_mock_api"
+      relative: true
+    source: path
+    version: "0.0.2"
   archive:
     dependency: transitive
     description:
@@ -22,6 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
+  bloc:
+    dependency: transitive
+    description:
+      name: bloc
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.0.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -57,6 +78,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  core:
+    dependency: transitive
+    description:
+      path: "../core"
+      relative: true
+    source: path
+    version: "0.0.1"
   crypto:
     dependency: transitive
     description:
@@ -85,6 +113,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  dio:
+    dependency: "direct main"
+    description:
+      name: dio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.6"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.3"
   extended_image:
     dependency: transitive
     description:
@@ -98,7 +140,7 @@ packages:
       name: extended_image_library
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.2"
+    version: "3.1.4"
   fake_async:
     dependency: transitive
     description:
@@ -125,6 +167,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_bloc:
+    dependency: "direct main"
+    description:
+      name: flutter_bloc
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.0.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -203,6 +252,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.4.0"
+  jumping_dot:
+    dependency: transitive
+    description:
+      name: jumping_dot
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   lints:
     dependency: transitive
     description:
@@ -223,7 +279,7 @@ packages:
       name: lottie
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.2"
+    version: "1.3.0"
   main:
     dependency: "direct main"
     description:
@@ -259,6 +315,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  onboarding:
+    dependency: "direct main"
+    description:
+      path: "../features/onboarding"
+      relative: true
+    source: path
+    version: "0.0.1"
   path:
     dependency: transitive
     description:
@@ -357,6 +420,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+  profile:
+    dependency: transitive
+    description:
+      path: "../features/profile"
+      relative: true
+    source: path
+    version: "0.0.1"
   provider:
     dependency: transitive
     description:
@@ -371,6 +441,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  retrofit:
+    dependency: transitive
+    description:
+      name: retrofit
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1+1"
   shared_preferences:
     dependency: transitive
     description:
@@ -525,4 +602,4 @@ packages:
     version: "5.3.1"
 sdks:
   dart: ">=2.16.2 <3.0.0"
-  flutter: ">=2.8.0"
+  flutter: ">=2.10.0"

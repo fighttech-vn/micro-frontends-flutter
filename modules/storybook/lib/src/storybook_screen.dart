@@ -1,13 +1,22 @@
+import 'package:app_engine/app_engine.dart';
+import 'package:app_mock_api/wiki_mock_api.dart';
 import 'package:design_system/design_system.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main/main.dart';
+import 'package:onboarding/onboarding.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 import 'package:ui/ui.dart';
+
+import 'data_models.dart';
 
 class StoryBookScreen extends StatefulWidget {
   static const routeName = '/story-book';
 
-  const StoryBookScreen({Key? key}) : super(key: key);
+  const StoryBookScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _StoryBookScreenState createState() => _StoryBookScreenState();
@@ -61,33 +70,6 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
   String get intStory => 'Widgets/LogoWidget';
 
   @override
-  List<Story> getWidgetsStory() => [
-        Story(
-          name: 'Widgets/LogoWidget',
-          builder: (_) => const LogoWidget(),
-        ),
-      ];
-
-  @override
-  List<Story> getScreenStory() => [
-        Story(
-          name: 'Screens/Empty',
-          builder: (_) => Scaffold(
-            appBar: AppBar(
-              title: const Text('Empty screen'),
-            ),
-            body: const Center(child: Text('body')),
-          ),
-        ),
-        Story(
-          name: 'Screens/Dashboard',
-          builder: (_) => Builder(builder: (context) {
-            return const DashboardScreen();
-          }),
-        ),
-      ];
-
-  @override
   List<Story> getMaterialStory() => [
         Story(
           name: 'DesignSystem/Button',
@@ -127,6 +109,68 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
           builder: (_) => const Padding(
             padding: EdgeInsets.only(top: 28.0),
             child: TextField(),
+          ),
+        ),
+      ];
+
+  @override
+  List<Story> getWidgetsStory() => [
+        Story(
+          name: 'Widgets/LogoWidget',
+          builder: (_) => const LogoWidget(),
+        ),
+      ];
+
+  @override
+  List<Story> getScreenStory() => [
+        Story(
+          name: 'Screens/Empty',
+          builder: (_) => Scaffold(
+            appBar: AppBar(
+              title: const Text('Empty screen'),
+            ),
+            body: const Center(child: Text('body')),
+          ),
+        ),
+        Story(
+          name: 'Screens/Dashboard',
+          builder: (_) => FutureBuilder<String>(
+              future: TestHelper.loadString(
+                  'packages/app_mock_api/assets/onboarding/sign_in.json'),
+              builder: (context, snapshot) {
+                if (snapshot.data?.isEmpty ?? true) {
+                  return const SizedBox();
+                }
+                final dio = Dio();
+                dio.httpClientAdapter = MockAdapter({
+                  '/sign-in': snapshot.data!,
+                });
+
+                return BlocProvider<UserBloc>(
+                  create: (context) => UserBloc()..add(LoadUserEvent(user)),
+                  child: const DashboardScreen(),
+                );
+              }),
+        ),
+        Story(
+          name: 'OnBoarding/SignInScreen',
+          builder: (_) => FutureBuilder<String>(
+            future: TestHelper.loadString(
+                'packages/app_mock_api/assets/onboarding/sign_in.json'),
+            builder: (context, snapshot) {
+              final dio = Dio()
+                ..httpClientAdapter = MockAdapter({
+                  '/sign-in': snapshot.data!,
+                });
+
+              return BlocProvider<SignInBloc>(
+                create: (context) => OnboardingFactory.createSignInBloc(
+                  dio,
+                  userBloc: UserBloc()..add(LoadUserEvent(user)),
+                ),
+                child: const SignInScreen(),
+              );
+            },
           ),
         ),
       ];
