@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../onboarding.dart';
-import 'presentation/sign_in/bloc/sign_in_bloc.dart';
 
 class OnBoardingRoutes {
   static Map<String, WidgetBuilder> getAll(RouteSettings settings) => {
