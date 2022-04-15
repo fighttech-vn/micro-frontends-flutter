@@ -23,8 +23,6 @@ dependencies:
   app_engine:
     path: ../../app_engine
 
-  
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
