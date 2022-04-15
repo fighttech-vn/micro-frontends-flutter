@@ -46,6 +46,9 @@ dev_dependencies:
   mockito: ^5.1.0
   bloc_test: ^9.0.3
 
+  app_mock_api:
+    path: ../../app_mock_api
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
