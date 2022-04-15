@@ -5,8 +5,7 @@ import 'package:main/main.dart';
 import 'src/storybook_screen.dart';
 
 void main() {
-    final application = Application(userBloc: UserBloc());
-
+  final application = Application(userBloc: UserBloc());
 
   runApp(MaterialApp(
     localizationsDelegates: application.localizationsDelegates,
