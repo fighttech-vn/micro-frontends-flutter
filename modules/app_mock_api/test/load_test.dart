@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:app_mock_api/wiki_mock_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 

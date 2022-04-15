@@ -7,6 +7,5 @@ class ProfileRoutes {
         EditProfileScreen.routeName: (context) {
           return const EditProfileScreen();
         },
-       
       };
 }

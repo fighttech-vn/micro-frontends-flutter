@@ -61,7 +61,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             package: 'design_system',
             width: 72,
           ),
-           const UserAvatar(),
+          const UserAvatar(),
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pushNamed('/edit-profile');

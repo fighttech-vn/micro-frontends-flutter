@@ -17,7 +17,7 @@ class AppDelegate {
     runZonedGuarded(() {
       runApp(Application(
         savedThemeMode: savedThemeMode,
-          userBloc: UserBloc(),
+        userBloc: UserBloc(),
       ));
     }, (_, __) {});
   }

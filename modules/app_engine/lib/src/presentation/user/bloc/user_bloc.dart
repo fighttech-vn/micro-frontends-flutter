@@ -5,7 +5,6 @@ import 'package:meta/meta.dart';
 
 import '../../../domain/entities/user.dart';
 
-
 part 'user_event.dart';
 part 'user_state.dart';
 

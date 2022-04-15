@@ -4,7 +4,6 @@ import 'package:app_engine/src/presentation/user/bloc/user_bloc.dart';
 
 import '../../helper/data_models.dart';
 
-
 void main() {
   late UserBloc userBloc;
 

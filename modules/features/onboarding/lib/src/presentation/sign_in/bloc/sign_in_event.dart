@@ -15,6 +15,6 @@ class SubmitSignInEvent extends SignInEvent {
 
 class UserInputChanged extends SignInEvent {
   final bool isEnable;
-  
+
   UserInputChanged({required this.isEnable});
 }

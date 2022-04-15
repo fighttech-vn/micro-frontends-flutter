@@ -73,7 +73,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -141,7 +140,6 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                       ),
-                     
                     ],
                   ),
                 ),
