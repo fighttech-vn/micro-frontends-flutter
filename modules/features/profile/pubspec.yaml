@@ -12,8 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  design_system:
-    path: ../../design_system
   localization:
     path: ../../localization
   ui:
@@ -21,8 +19,6 @@ dependencies:
   app_engine:
     path: ../../app_engine
 
-  flutter_bloc: ^8.0.1
-    
   # Core
   equatable: ^2.0.3
 
