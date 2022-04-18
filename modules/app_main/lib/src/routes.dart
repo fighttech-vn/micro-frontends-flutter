@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';
 import 'package:profile/profile.dart';
 
-import '../main.dart';
+import '../app_main.dart';
 
 class Routes {
   static Map<String, WidgetBuilder> _getAll(RouteSettings settings) => {

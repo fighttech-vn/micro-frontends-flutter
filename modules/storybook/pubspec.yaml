@@ -26,15 +26,10 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   
-  cupertino_icons: ^1.0.2
-  storybook_flutter: ^0.10.1
-  flutter_bloc: ^8.0.1
-  dio: ^4.0.6
-
   ui:
     path: ../ui
-  main:
-    path: ../main
+  app_main:
+    path: ../app_main
   localization:
     path: ../localization
   design_system:
@@ -44,9 +39,16 @@ dependencies:
 
   app_mock_api:
     path: ../app_mock_api
-
+    
+  # mini app
   onboarding:
     path: ../features/onboarding
+
+  cupertino_icons: ^1.0.2
+  storybook_flutter: ^0.10.1
+  flutter_bloc: ^8.0.1
+  dio: ^4.0.6
+  shared_preferences: ^2.0.13
 
 dev_dependencies:
   flutter_test:
