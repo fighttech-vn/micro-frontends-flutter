@@ -1,7 +1,8 @@
 name: app_engine
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: https://tech.fighttech.vn
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
   sdk: ">=2.16.2 <3.0.0"
@@ -11,19 +12,32 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_bloc: ^8.0.1
-    
+  core:
+    path: ../core
+  
+  design_system:
+    path: ../design_system
+  localization:
+    path: ../localization
+  ui:
+    path: ../ui
+
   # Core
+
   equatable: ^2.0.3
+
+  get_it: ^7.2.0
+  shared_preferences: ^2.0.13
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
   build_runner: ^2.1.7
   
-  bloc_test: ^9.0.3
   mockito: ^5.1.0
+  bloc_test: ^9.0.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

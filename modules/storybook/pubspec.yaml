@@ -28,8 +28,6 @@ dependencies:
   
   ui:
     path: ../ui
-  app_main:
-    path: ../app_main
   localization:
     path: ../localization
   design_system:
@@ -39,7 +37,8 @@ dependencies:
 
   app_mock_api:
     path: ../app_mock_api
-    
+  app_main:
+    path: ../app_main
   # mini app
   onboarding:
     path: ../features/onboarding

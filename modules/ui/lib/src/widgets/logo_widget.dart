@@ -1,3 +1,5 @@
+// Copyright 2022 Fighttech.vn, Ltd. All rights reserved.
+
 import 'package:flutter/material.dart';
 
 class LogoWidget extends StatelessWidget {
