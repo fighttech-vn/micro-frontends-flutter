@@ -3,13 +3,14 @@ import 'package:ui/ui.dart';
 
 Story get flutterLogoStory => Story(
       name: 'Widgets/LogoWidget',
-      builder: (context) =>  LogoWidget(
+      builder: (context) => LogoWidget(
         size: context.knobs.nullable.slider(
-          label: 'AppBar elevation',
-          initial: 4,
-          min: 0,
-          max: 10,
-          description: 'Elevation of the app bar.',
-        ) ?? 25,
+              label: 'Logo Flutter Image',
+              initial: 40,
+              min: 20,
+              max: 700,
+              description: 'Logo Flutter image',
+            ) ??
+            72,
       ),
     );

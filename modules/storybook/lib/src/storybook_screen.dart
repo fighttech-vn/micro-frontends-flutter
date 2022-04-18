@@ -1,6 +1,5 @@
 import 'package:app_engine/app_engine.dart';
 import 'package:app_main/app_main.dart';
-import 'package:app_mock_api/wiki_mock_api.dart';
 import 'package:design_system/design_system.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,7 @@ import 'package:onboarding/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-import 'dummy_data_models.dart';
+import 'material/flutter_logo_story.dart';
 import 'material/scaffold_storybook.dart';
 
 class StoryBookScreen extends StatefulWidget {
@@ -129,7 +128,9 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
       ];
 
   @override
-  List<Story> getWidgetsStory() => [];
+  List<Story> getWidgetsStory() => [
+        flutterLogoStory,
+      ];
 
   @override
   List<Story> getScreenStory() => [
@@ -144,30 +145,14 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
         ),
         Story(
           name: 'Screens/Dashboard',
-          builder: (_) => FutureBuilder<String>(
-              future: TestHelper.loadString(
-                  'packages/app_mock_api/assets/onboarding/sign_in.json'),
-              builder: (context, snapshot) {
-                if (snapshot.data?.isEmpty ?? true) {
-                  return const SizedBox();
-                }
-                final dio = Dio();
-                dio.httpClientAdapter = MockAdapter({
-                  '/sign-in': snapshot.data!,
-                });
-
-                return BlocProvider<UserBloc>(
-                  create: (context) => UserBloc()..add(LoadUserEvent(user)),
-                  child: const DashboardScreen(),
-                );
-              }),
+          builder: (_) => const DashboardScreen(),
         ),
         Story(
           name: 'OnBoarding/SignInScreen',
           builder: (_) => BlocProvider<SignInBloc>(
             create: (context) => OnboardingFactory.createSignInBloc(
               dio,
-              userBloc: UserBloc()..add(LoadUserEvent(user)),
+              userBloc: widget.userBloc,
             ),
             child: const SignInScreen(),
           ),

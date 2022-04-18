@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'src/dummy_data_models.dart';
 import 'src/storybook_screen.dart';
 
 Future<void> main() async {
@@ -20,8 +21,8 @@ Future<void> main() async {
   };
 
   final dio = Dio()..httpClientAdapter = MockAdapter(mockApiResponse);
-  final userBloc = UserBloc();
-
+  final userBloc = UserBloc()..add(LoadUserEvent(userDummy));
+  
   final app = MaterialApp(
     home: StoryBookScreen(
       sharedPreferences: sharedPreferences,
