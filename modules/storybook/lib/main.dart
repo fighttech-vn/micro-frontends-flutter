@@ -16,7 +16,7 @@ Future<void> main() async {
   // Remote datasource
   final mockApiResponse = {
     '/sign-in': await TestHelper.loadString(
-        'packages/api_mock_api/assets/onboarding/post_sign_in.json'),
+        'packages/app_mock_api/assets/onboarding/post_sign_in.json'),
   };
 
   final dio = Dio()..httpClientAdapter = MockAdapter(mockApiResponse);
