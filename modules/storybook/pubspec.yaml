@@ -28,8 +28,8 @@ dependencies:
   
   ui:
     path: ../ui
-  main:
-    path: ../main
+  app_main:
+    path: ../app_main
   localization:
     path: ../localization
   design_system:

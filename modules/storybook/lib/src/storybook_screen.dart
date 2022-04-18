@@ -1,11 +1,11 @@
 import 'package:app_engine/app_engine.dart';
+import 'package:app_main/app_main.dart';
 import 'package:app_mock_api/wiki_mock_api.dart';
 import 'package:design_system/design_system.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:localization/localization.dart';
-import 'package:main/main.dart';
 import 'package:onboarding/onboarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
