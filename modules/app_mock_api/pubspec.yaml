@@ -29,7 +29,7 @@ flutter:
   assets:
     - assets/
     - assets/onboarding/post_sign_in.json
-    - assets/profile/view_profile.json
+    - assets/profile/get_view_profile.json
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   #
