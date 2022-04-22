@@ -1,5 +1,18 @@
 # micro_frontends_flutter: 
-Live: https://flutter-fightkit.web.app/
+- Hosting URL: https://flutter-fightkit.web.app/
+- Stoybook: https://flutter-fightkit.web.app/
+    PreviewCode: `miro@r1`
+This repository contains all source code flutter for the project.
+
+-  Language: Dart
+-  Flutter: stable 2.10.5
+- IDE:  Visual Code / Android Studio
+- Deployment target
+    -  iOS: `10.0+.`
+    - Android: `minSdkVersion 21`
+- Device Orientation: Portrail (primary)
+- Standard design: iPhone XS (375x812 @3x)
+- flavor: n/a (development | production)
 
 # Features
  - [x] Get assets multi packages

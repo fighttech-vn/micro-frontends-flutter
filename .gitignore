@@ -48,4 +48,16 @@ GeneratedPluginRegistrant.swift
 modules/storybook/windows/flutter/generated_plugin_registrant.cc
 modules/storybook/windows/flutter/generated_plugin_registrant.h
 modules/storybook/windows/flutter/generated_plugins.cmake
-modules/storybook/.firebase/
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Flutter/GeneratedPluginRegistrant.swift
+windows/flutter/generated_plugin_registrant.cc
+windows/flutter/generated_plugin_registrant.h
+windows/flutter/generated_plugins.cmake
+/modules/storybook/.firebase
+/.firebase
+modules/ui/coverage/
+modules/features/onboarding/coverage/
+modules/features/booking/coverage/
+modules/features/profile/coverage/
+modules/features/appointment/coverage/
+modules/features/social/coverage/
