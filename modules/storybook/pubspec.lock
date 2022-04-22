@@ -15,6 +15,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  app_main:
+    dependency: "direct main"
+    description:
+      path: "../app_main"
+      relative: true
+    source: path
+    version: "0.0.1"
   app_mock_api:
     dependency: "direct main"
     description:
@@ -210,6 +217,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
+  get_it:
+    dependency: transitive
+    description:
+      name: get_it
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.2.0"
   http:
     dependency: transitive
     description:
@@ -280,13 +294,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
-  main:
-    dependency: "direct main"
-    description:
-      path: "../main"
-      relative: true
-    source: path
-    version: "0.0.1"
   matcher:
     dependency: transitive
     description:
@@ -449,7 +456,7 @@ packages:
     source: hosted
     version: "3.0.1+1"
   shared_preferences:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shared_preferences
       url: "https://pub.dartlang.org"

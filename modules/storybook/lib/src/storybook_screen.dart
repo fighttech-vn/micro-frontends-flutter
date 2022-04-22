@@ -1,21 +1,31 @@
 import 'package:app_engine/app_engine.dart';
-import 'package:app_mock_api/wiki_mock_api.dart';
+import 'package:app_main/app_main.dart';
 import 'package:design_system/design_system.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:main/main.dart';
+import 'package:localization/localization.dart';
 import 'package:onboarding/onboarding.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
-import 'package:ui/ui.dart';
 
-import 'data_models.dart';
+import 'material/flutter_logo_story.dart';
+import 'material/scaffold_storybook.dart';
 
 class StoryBookScreen extends StatefulWidget {
   static const routeName = '/story-book';
 
+  final SharedPreferences sharedPreferences;
+  final UserBloc userBloc;
+  final Dio dio;
+  final Map<String, dynamic> mockApiResponse;
+
   const StoryBookScreen({
     Key? key,
+    required this.sharedPreferences,
+    required this.userBloc,
+    required this.dio,
+    required this.mockApiResponse,
   }) : super(key: key);
 
   @override
@@ -41,10 +51,11 @@ mixin StorybookBase {
           device: Devices.ios.iPhone13,
         ),
         contentsSidePanel: true,
-        knobsSidePanel: false,
+        knobsSidePanel: true,
       ),
       wrapperBuilder: (ct, wid) {
         return MaterialApp(
+          localizationsDelegates: LocalizationFactory.localizationsDelegates,
           theme: ThemeData().getTheme(Brightness.light),
           darkTheme: ThemeData().getTheme(Brightness.dark),
           debugShowCheckedModeBanner: false,
@@ -59,6 +70,8 @@ mixin StorybookBase {
 }
 
 class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
+  Dio get dio => widget.dio;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,6 +94,7 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
             ),
           ),
         ),
+        scaffoldStory,
         Story(
           name: 'DesignSystem/ButtonIcon',
           builder: (_) => Padding(
@@ -115,10 +129,7 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
 
   @override
   List<Story> getWidgetsStory() => [
-        Story(
-          name: 'Widgets/LogoWidget',
-          builder: (_) => const LogoWidget(),
-        ),
+        flutterLogoStory,
       ];
 
   @override
@@ -134,43 +145,16 @@ class _StoryBookScreenState extends State<StoryBookScreen> with StorybookBase {
         ),
         Story(
           name: 'Screens/Dashboard',
-          builder: (_) => FutureBuilder<String>(
-              future: TestHelper.loadString(
-                  'packages/app_mock_api/assets/onboarding/sign_in.json'),
-              builder: (context, snapshot) {
-                if (snapshot.data?.isEmpty ?? true) {
-                  return const SizedBox();
-                }
-                final dio = Dio();
-                dio.httpClientAdapter = MockAdapter({
-                  '/sign-in': snapshot.data!,
-                });
-
-                return BlocProvider<UserBloc>(
-                  create: (context) => UserBloc()..add(LoadUserEvent(user)),
-                  child: const DashboardScreen(),
-                );
-              }),
+          builder: (_) => const DashboardScreen(),
         ),
         Story(
           name: 'OnBoarding/SignInScreen',
-          builder: (_) => FutureBuilder<String>(
-            future: TestHelper.loadString(
-                'packages/app_mock_api/assets/onboarding/sign_in.json'),
-            builder: (context, snapshot) {
-              final dio = Dio()
-                ..httpClientAdapter = MockAdapter({
-                  '/sign-in': snapshot.data!,
-                });
-
-              return BlocProvider<SignInBloc>(
-                create: (context) => OnboardingFactory.createSignInBloc(
-                  dio,
-                  userBloc: UserBloc()..add(LoadUserEvent(user)),
-                ),
-                child: const SignInScreen(),
-              );
-            },
+          builder: (_) => BlocProvider<SignInBloc>(
+            create: (context) => OnboardingFactory.createSignInBloc(
+              dio,
+              userBloc: widget.userBloc,
+            ),
+            child: const SignInScreen(),
           ),
         ),
       ];

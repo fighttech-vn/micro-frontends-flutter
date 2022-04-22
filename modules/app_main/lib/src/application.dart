@@ -3,7 +3,6 @@ import 'package:app_engine/app_engine.dart';
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:localization/localization.dart';
 
 import 'routes.dart';
@@ -21,13 +20,6 @@ class Application extends StatelessWidget {
   String get initialRoute {
     return 'sign-in';
   }
-
-  Iterable<LocalizationsDelegate<dynamic>> get localizationsDelegates => const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ];
 
   List<BlocProvider> get _getProviders => [
         BlocProvider<UserBloc>(create: (BuildContext context) => userBloc),
@@ -56,7 +48,7 @@ class Application extends StatelessWidget {
       title: 'Flutter Demo',
       theme: light,
       darkTheme: dark,
-      localizationsDelegates: localizationsDelegates,
+      localizationsDelegates: LocalizationFactory.localizationsDelegates,
       supportedLocales: const [
         Locale('en', ''), // English, no country code
         Locale('es', ''), // Spanish, no country code
