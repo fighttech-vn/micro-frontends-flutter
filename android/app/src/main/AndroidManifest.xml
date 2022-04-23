@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="vn.fighttech.flutterfightkit">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="micro_frontends_flutter"
         android:name="${applicationName}"
