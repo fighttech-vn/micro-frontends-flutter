@@ -61,3 +61,5 @@ modules/features/booking/coverage/
 modules/features/profile/coverage/
 modules/features/appointment/coverage/
 modules/features/social/coverage/
+ios/Flutter/Generated.xcconfig
+windows/flutter/generated_plugins.cmake
