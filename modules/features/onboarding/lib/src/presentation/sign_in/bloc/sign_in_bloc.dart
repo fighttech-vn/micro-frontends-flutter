@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:app_engine/app_engine.dart';
+import 'package:app_core/app_core.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';

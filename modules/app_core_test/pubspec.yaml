@@ -1,4 +1,4 @@
-name: app_engine_test
+name: app_core_test
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: "none"
@@ -12,8 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  app_engine:
-    path: ../app_engine
+  app_core:
+    path: ../app_core
   
   # Core
   equatable: ^2.0.3

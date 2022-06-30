@@ -1,4 +1,4 @@
-name: app_engine
+name: app_core
 description: A new Flutter package project.
 version: 0.0.1
 homepage: https://tech.fighttech.vn
@@ -11,9 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  core:
-    path: ../core
   
   design_system:
     path: ../design_system
@@ -23,12 +20,13 @@ dependencies:
     path: ../ui
 
   # Core
-
   equatable: ^2.0.3
 
   get_it: ^7.2.0
   shared_preferences: ^2.0.13
   dio: ^4.0.6
+  
+  bot_interceptor: ^0.0.3
 
 dev_dependencies:
   flutter_test:
@@ -38,8 +36,8 @@ dev_dependencies:
   
   mockito: ^5.1.0
   bloc_test: ^9.0.3
-  app_engine_test:
-    path: ../app_engine_test
+  app_core_test:
+    path: ../app_core_test
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

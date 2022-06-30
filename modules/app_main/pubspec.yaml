@@ -19,8 +19,8 @@ dependencies:
     path: ../design_system
   localization:
     path: ../localization
-  app_engine:
-    path: ../app_engine
+  app_core:
+    path: ../app_core
   
   onboarding:
     path: ../features/onboarding
@@ -41,8 +41,8 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^1.0.4
   
-  app_engine_test:
-    path: ../app_engine_test
+  app_core_test:
+    path: ../app_core_test
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

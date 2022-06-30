@@ -1,4 +1,4 @@
-import 'package:app_engine/app_engine.dart';
+import 'package:app_core/app_core.dart';
 import 'package:mockito/annotations.dart';
 import 'package:onboarding/src/domain/usecases/authentication_usecase.dart';
 

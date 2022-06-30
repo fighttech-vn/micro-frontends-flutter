@@ -1,4 +1,4 @@
-import 'package:app_engine/app_engine.dart';
+import 'package:app_core/app_core.dart';
 
 import '../../domain/repository/onboarding_repository.dart';
 import '../datasources/remote/onboarding_api.dart';

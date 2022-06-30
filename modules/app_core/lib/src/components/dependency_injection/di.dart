@@ -1,9 +1,10 @@
 // Copyright 2021 Fighttech.vn, Ltd. All rights reserved.
 
-import 'package:core/core.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../app_core_factory.dart';
 
 GetIt injector = GetIt.instance;
 
@@ -14,12 +15,6 @@ class DependencyInjection {
 
     injector.registerSingleton<SharedPreferences>(sharedPreferences);
 
-    final dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://production-site.net/api/v1/',
-      ),
-    )..interceptors.add(LoggerInterceptor());
-
-    injector.registerSingleton<Dio>(dio);
+    injector.registerSingleton<Dio>(AppCoreFactory.createDio());
   }
 }

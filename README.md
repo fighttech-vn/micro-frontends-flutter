@@ -29,7 +29,7 @@ This repository contains all source code flutter for the project.
   flutter create --template=package hello
   
   flutter create --template=package core
-  flutter create --template=package app_engine
+  flutter create --template=package app_core
 ```
 
 ## Add project 

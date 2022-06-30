@@ -1,4 +1,4 @@
-import 'package:app_engine/app_engine.dart';
+import 'package:app_core/app_core.dart';
 
 const userDummy = User(
   email: 'email@gmail.com',

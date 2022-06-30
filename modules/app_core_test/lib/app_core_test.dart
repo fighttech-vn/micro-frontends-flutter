@@ -1,4 +1,4 @@
-library app_engine_test;
+library app_core_test;
 
 export 'src/dummy_data/data_models.dart';
 export 'src/gen_mock/mock_object.dart';
