@@ -1,4 +1,4 @@
-import 'package:app_engine/app_engine.dart';
+import 'package:app_core/app_core.dart';
 
 const user = User(
   email: 'e@gmail.com',

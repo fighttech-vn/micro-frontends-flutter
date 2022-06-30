@@ -3,7 +3,7 @@
 import 'dart:async';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:app_engine/app_engine.dart';
+import 'package:app_core/app_core.dart';
 import 'package:flutter/material.dart';
 
 import 'application.dart';

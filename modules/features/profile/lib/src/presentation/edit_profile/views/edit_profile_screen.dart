@@ -1,4 +1,4 @@
-import 'package:app_engine/app_engine.dart';
+import 'package:app_core/app_core.dart';
 import 'package:flutter/material.dart';
 
 class EditProfileScreen extends StatefulWidget {

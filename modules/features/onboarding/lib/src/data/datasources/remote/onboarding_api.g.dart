@@ -6,6 +6,8 @@ part of 'onboarding_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 class _OnBoardingApi implements OnBoardingApi {
   _OnBoardingApi(this._dio, {this.baseUrl});
 
@@ -25,7 +27,12 @@ class _OnBoardingApi implements OnBoardingApi {
                 .compose(_dio.options, '',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = ApiResponse<List<UserModel>>.fromJson(_result.data!);
+    final value = ApiResponse<List<UserModel>>.fromJson(
+      _result.data!,
+      (json) => (json as List<dynamic>)
+          .map<UserModel>((i) => UserModel.fromJson(i as Map<String, dynamic>))
+          .toList(),
+    );
     return value;
   }
 

@@ -5,7 +5,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:onboarding/src/data/datasources/remote/onboarding_api.dart';
 import 'package:onboarding/src/data/models/api_response.dart';
-import 'package:onboarding/src/data/models/user_model.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -30,8 +29,11 @@ void main() {
       final result = await onboardingApi.signIn();
 
       // Then
-      expect(result,
-          equals(ApiResponse<List<UserModel>>.fromJson(jsonDecode(source))));
+      expect(
+        result,
+        equals(ApiResponse<dynamic>.fromJson(
+            jsonDecode(source), (json) => json as dynamic)),
+      );
     });
   });
 }

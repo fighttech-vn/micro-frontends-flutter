@@ -1,4 +1,4 @@
-import 'package:app_engine/app_engine.dart';
+import 'package:app_core/app_core.dart';
 import 'package:app_main/app_main.dart';
 import 'package:design_system/design_system.dart';
 import 'package:dio/dio.dart';

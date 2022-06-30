@@ -1,8 +1,7 @@
-import 'package:app_engine_test/app_engine_test.dart';
+import 'package:app_core_test/app_core_test.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:app_engine/src/presentation/user/bloc/user_bloc.dart';
-
+import 'package:app_core/src/presentation/user/bloc/user_bloc.dart';
 
 void main() {
   late UserBloc userBloc;

@@ -16,8 +16,8 @@ dependencies:
     path: ../../localization
   ui:
     path: ../../ui
-  app_engine:
-    path: ../../app_engine
+  app_core:
+    path: ../../app_core
 
   # Core
   equatable: ^2.0.3

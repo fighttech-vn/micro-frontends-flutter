@@ -1,6 +1,6 @@
 // Copyright 2022 Fighttech.vn, Ltd. All rights reserved.
 
-import 'package:app_engine/app_engine.dart';
+import 'package:app_core/app_core.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
